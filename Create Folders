@@ -8,21 +8,18 @@ wb = xlrd.open_workbook(loc)
 sheet = wb.sheet_by_index(1)
 
 def createBP():
-    content = sheet.col_slice(3,8)
+    content = sheet.col_slice(3, 8)
     BPList = []
-    UniqueBPList = []
     for i in content:
         if type(i.value) == str:
-            filename = re.sub(r'[,.;@#?!&$*]+', '', i.value)
-            BPList.append(filename)
-            for j in BPList:
-                if j not in UniqueBPList:
-                    UniqueBPList.append(j)
-                    print(UniqueBPList)
-    for x in UniqueBPList:
+            filename = re.sub(r'[,.;:@#?!&$*]+', '', i.value)
+            if len(filename) >= 100:
+                splitFilename = filename.split()
+                filename = " ".join(splitFilename[:12])
+            if filename not in BPList:
+                BPList.append(filename)
+    for x in BPList:
         if not os.path.exists("Link to your file path where you want your folders to be created" + x):
             os.makedirs("Link to your file path where you want your folders to be created" + x)
-        
-                
-               
-createBP() 
+
+createBP()
