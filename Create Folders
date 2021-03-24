@@ -2,7 +2,7 @@ import xlrd
 import os
 import re
 
-loc = ("C:\\Users\\rdu026\\Desktop\\Upwork\\Python\\Aura Reports\\Assigned Workflow by Business Process - Upwork Inc FY 2020 Audit (2021-03-23T16-20-47).XLS")
+loc = ("link to your file path which contains the Aura Business Process Report")
 
 wb = xlrd.open_workbook(loc)
 sheet = wb.sheet_by_index(1)
@@ -20,8 +20,8 @@ def createBP():
                     UniqueBPList.append(j)
                     print(UniqueBPList)
     for x in UniqueBPList:
-        if not os.path.exists("C:\\Users\\rdu026\\Desktop\\Upwork\\Python\\FY20 Test 1\\" + x):
-            os.makedirs("C:\\Users\\rdu026\\Desktop\\Upwork\\Python\\FY20 Test 1\\" + x)
+        if not os.path.exists("Link to your file path where you want your folders to be created" + x):
+            os.makedirs("Link to your file path where you want your folders to be created" + x)
         
                 
                
