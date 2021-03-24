@@ -1,0 +1,28 @@
+import xlrd
+import os
+import re
+
+loc = ("C:\\Users\\rdu026\\Desktop\\Upwork\\Python\\Aura Reports\\Assigned Workflow by Business Process - Upwork Inc FY 2020 Audit (2021-03-23T16-20-47).XLS")
+
+wb = xlrd.open_workbook(loc)
+sheet = wb.sheet_by_index(1)
+
+def createBP():
+    content = sheet.col_slice(3,8)
+    BPList = []
+    UniqueBPList = []
+    for i in content:
+        if type(i.value) == str:
+            filename = re.sub(r'[,.;@#?!&$*]+', '', i.value)
+            BPList.append(filename)
+            for j in BPList:
+                if j not in UniqueBPList:
+                    UniqueBPList.append(j)
+                    print(UniqueBPList)
+    for x in UniqueBPList:
+        if not os.path.exists("C:\\Users\\rdu026\\Desktop\\Upwork\\Python\\FY20 Test 1\\" + x):
+            os.makedirs("C:\\Users\\rdu026\\Desktop\\Upwork\\Python\\FY20 Test 1\\" + x)
+        
+                
+               
+createBP() 
