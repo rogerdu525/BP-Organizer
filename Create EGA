@@ -1,3 +1,12 @@
+import xlrd
+import os
+import re
+
+loc = ("Link to your file path which contains the Aura Business Process Report")
+
+wb = xlrd.open_workbook(loc)
+sheet = wb.sheet_by_index(1)
+
 def createEGA():
     content = sheet.col_slice(4, 8)
     EGAList = []
