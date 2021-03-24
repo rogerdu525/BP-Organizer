@@ -1,0 +1,16 @@
+def createEGA():
+    content = sheet.col_slice(4, 8)
+    EGAList = []
+    for i in content:
+        if type(i.value) == str:
+            filename = re.sub(r'[,.;:@#?!&$*]+', '', i.value)
+            if len(filename) >= 100:
+                splitFilename = filename.split()
+                filename = " ".join(splitFilename[:12])
+            if filename not in EGAList:
+                EGAList.append(filename)
+    for x in EGAList:
+        if not os.path.exists("Link file path" + x):
+            os.makedirs("Link file path" + x)
+
+createEGA()
