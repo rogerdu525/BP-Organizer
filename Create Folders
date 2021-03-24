@@ -2,7 +2,7 @@ import xlrd
 import os
 import re
 
-loc = ("link to your file path which contains the Aura Business Process Report")
+loc = ("Link to your file path which contains the Aura Business Process Report")
 
 wb = xlrd.open_workbook(loc)
 sheet = wb.sheet_by_index(1)
